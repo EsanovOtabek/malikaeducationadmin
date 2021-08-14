@@ -1,0 +1,1 @@
+css-js.rar faylini shu joyni o'zida ochasiz css va js papkalari turishi kerak
