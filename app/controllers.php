@@ -69,6 +69,30 @@ class Insert
 		$res=mysqli_query($this->db,$sql);
 		return $res;
 	}
+
+	public function galereya($data,$file=null){
+
+		foreach ($data as $key => $value) {
+			$$key=mysqli_real_escape_string($this->db,trim($value));
+		}
+
+		if($file['size']<4000000&&$file['error']==0){
+			
+			$fname=$file['name'];
+			$rnd=time();
+			$rasm=md5($rnd).$fname;// bazaga shu nom saqlaymiz
+			$filename="fayl/".$rasm;//fayl tushadigan joyga 
+			$tmp_name=$file['tmp_name'];
+
+			move_uploaded_file($tmp_name, $filename);
+
+		}
+
+		$sql="INSERT INTO galereya(name,rasm) VALUES ('$name','$rasm')";
+		$res=mysqli_query($this->db,$sql);
+		return $res;
+
+	}
 }
 
 /**
@@ -102,6 +126,29 @@ class Edit
 			$sql="UPDATE  news SET name='$name',title='$title',text='$content',rasm='$rasm',tur='$tur',isslide=$slider,ilova='$btn_link' WHERE id=$edit_id";
 		}else{
 			$sql="UPDATE  news SET name='$name',title='$title',text='$content',tur='$tur',isslide=$slider,ilova='$btn_link' WHERE id=$edit_id";
+		}
+		$res=mysqli_query($this->db,$sql);
+		return $res;
+	}
+
+	public function galereya($data,$file=null){
+
+		foreach ($data as $key => $value) {
+			$$key=mysqli_real_escape_string($this->db,trim($value));
+		}
+
+		if($file['size']<4000000&&$file['error']==0){
+			
+			$fname=$file['name'];
+			$rnd=time();
+			$rasm=md5($rnd).$fname;// bazaga shu nom saqlaymiz
+			$filename="fayl/".$rasm;//fayl tushadigan joyga 
+			$tmp_name=$file['tmp_name'];
+
+			move_uploaded_file($tmp_name, $filename);
+			$sql="UPDATE  galereya SET name='$name',rasm='$rasm' WHERE id=$edit_id";
+		}else{
+			$sql="UPDATE  galereya SET name='$name' WHERE id=$edit_id";
 		}
 		$res=mysqli_query($this->db,$sql);
 		return $res;
