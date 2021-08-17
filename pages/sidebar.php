@@ -2,7 +2,7 @@
 $url=explode('/',$_SERVER['PHP_SELF']);
 $uri=$url[2];
 
-$menu = array('index.php' => "Xabarlar", 'arizalar.php' =>  "Arizalar",'yangiliklar.php' =>  "Postlar",'yangilik.php'=>"Post qo'shish");
+$menu = array('index.php' => "Xabarlar", 'arizalar.php' =>  "Arizalar",'yangiliklar.php' =>  "Postlar",'yangilik.php'=>"Post qo'shish",'rasmlar.php'=>"Galereya",'rasm.php'=>"Rasm qo'shish");
 ?>
 
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse text-white bg-dark pt-5 p-2">
