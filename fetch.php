@@ -25,12 +25,25 @@ if(isset($_POST['method'])){
 		$insert=new Insert();
 		if(method_exists($insert,$method)){
 			if ($insert->$method($_POST,$_FILES['rasm'])) {
-				echo("<script>alert(\"Post qo'shildi\")</script>");
+				echo("<script>alert(\"$method ga qo'shildi\")</script>");
 			}else{
 				echo("<script>alert(\"Xatolik..\")</script>");
 			}
 		}else 	echo("<script>alert(\"Xatolik\")</script>"); 
 	}
 }
+
+switch ($method) {
+	case 'news':
+		print("<script>location.href=('yangiliklar.php')</script>");
+		break;
+	
+	case 'galereya':
+		print("<script>location.href=('rasmlar.php')</script>");
+		break;
+	
+	default:
+		print("<script>location.href=('index.php')</script>");
+		break;
+}
 ?>
-<script type="text/javascript">location.href=('yangiliklar.php')</script>
