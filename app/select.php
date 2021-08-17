@@ -120,4 +120,32 @@ function yangiliklar(){
 
 <?}
 
- 
+function rasmlar(){
+	$sqladd="";
+
+
+	$sql="SELECT * FROM `galereya` ORDER BY id DESC";
+	$res=mysqli_query($GLOBALS['db'],$sql); $i=1;?>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+			<?while ($row=mysqli_fetch_array($res)) {?>
+				<div class="col">
+					<div class="card shadow-sm">
+						<img src="fayl/<?=$row['rasm']?>">
+						<div class="card-body">
+							<p class="card-text"><h5><?=$row['name']?> </h5></p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<a href="rasm.php?edit=<?=$row['id']?>" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a>
+									<a href="" onclick="delet(<?=$row['id']?>)"  class="btn btn-outline-danger"><i class="fa fa-trash"></i></a>
+								</div>
+								<h6 class="text-muted"> <?=$row['vaqt']?></h6>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			<? } ?>
+		</div>
+
+<?} 
